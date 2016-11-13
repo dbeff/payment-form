@@ -18,6 +18,6 @@
 		"eqeqeq": 0,
 		"new-cap":0,
 		"no-alert": 1,
-		"no-unused-vars": [2, {"vars": "all", "args": "none"}]
+		"no-unused-vars": 0
 	}
 }
