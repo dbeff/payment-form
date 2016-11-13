@@ -1,24 +1,17 @@
-var apiURL =  "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=[COUNTRY]&q=[QUERY]";
-
-
-
-
-
-function ajax(url){
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET", url);
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-            if(xmlhttp.status == 200){
-                console.log("Response: " + xmlhttp.responseText );
-            }else{
-                console.log("Error: " + xmlhttp.statusText )
-            }
-        }
-    }
-    xmlhttp.send(data);
+function parsePayload(payload) {
+    var resultElement = document.querySelector(".results");
+    resultElement.innerHTML = payload.toString();
 }
 
+function ajax(filter, query) {
+    var script = document.createElement("script");
+    script.src = "//gd.geobytes.com/AutoCompleteCity?callback=parsePayload&filter=" + filter + "&q=" + query;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
 
-
-ajax(apiURL);
+function onChangeCity(e, value) {
+    var country = document.querySelector(".country");
+    if (value.length >= 3 && country !== "") {
+        ajax(country.value, value);
+    }
+}
