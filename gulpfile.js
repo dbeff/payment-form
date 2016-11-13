@@ -107,7 +107,7 @@ gulp.task("html", function() {
 });
 
 //-------------------------------------------------------------------
-// WATCH
+// DEFAULT - WATCH
 //-------------------------------------------------------------------
 
 gulp.task("clean:dev", del.bind(null, [dev]));
@@ -131,7 +131,7 @@ gulp.task("serve:dev", function() {
 
 });
 
-gulp.task("watch", ["clean:dev"], function(cb) {
+gulp.task("default", ["clean:dev"], function(cb) {
     runSequence(["styles", "templates"], "serve:dev", cb);
 });
 
