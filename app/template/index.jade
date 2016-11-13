@@ -1,3 +1,47 @@
 extends /layouts/_default
 
 block content
+    main.main
+        form.form
+            fieldset.information.group
+                
+                legend Personal Information
+                fieldset.name
+                    label First Name
+                    input(type="text" placeholder="Your name")
+                fieldset.surname
+                    label Surname
+                    input(type="text" placeholder="Your surname")
+            fieldset.shipping.group
+                legend Shipping information
+                fieldset.adress
+                    label Adress
+                    textarea Multiline text area
+                fieldset.city
+                    label City
+                    select
+                        option Country
+                        option Brazil
+                        option German
+                    input(type="text" placeholder="City")
+                fieldset.cost
+                    label Shipping cost
+                    input(type="text" placeholder="Total")
+            fieldset.payment.group
+                legend Payment method
+                fieldset.card-name
+                    label Card name
+                    input(type="text" placeholder="Complete name")
+                fieldset.card-number
+                    label Card number
+                    input(type="text" placeholder="Your card number")
+                fieldset.card-ccv
+                    label CCV
+                    input(type="text" placeholder="Your card CCV")
+            fieldset.submit
+                fieldset.agreement
+                    input(type="checkbox" id="agreement-checkbox" name="agreement")
+                    label(for="agreement-checkbox") Agree terms and conditions
+                fieldset.submit
+                    button Send
+            
