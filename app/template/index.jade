@@ -19,11 +19,15 @@ block content
                     textarea Multiline text area
                 fieldset.city
                     label City
-                    select
-                        option Country
-                        option Brazil
-                        option German
-                    input(type="text" placeholder="City")
+                    select.country
+                        option(value="" disabled selected) Country
+                        option(value="DE") Germany
+                        option(value="AT") Austria
+                        option(value="ES") Spain
+                        option(value="FR") France
+                        option(value="UK") UK
+                    input(type="text" placeholder="City" onkeyup="onChangeCity(this,this.value)")
+                    div.results
                 fieldset.cost
                     label Shipping cost
                     input(type="text" placeholder="Total")
