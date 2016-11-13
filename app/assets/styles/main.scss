@@ -1,19 +1,141 @@
-//------------------------------------------------------
-// FRONTENDLER
-//------------------------------------------------------
 @import "frontendler";
-
-//------------------------------------------------------
-// SETTINGS
-//------------------------------------------------------
 @import "settings";
-
-//------------------------------------------------------
-// ANIMATIONS
-//------------------------------------------------------
 @include animations();
-
-//------------------------------------------------------
-// RESET CSS
-//------------------------------------------------------
 @include reset();
+
+body {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    @include grid-row();
+    @include grid-column(1,1,false);
+    padding-bottom: $grid-gutter;
+}
+
+legend {
+    @include grid-column(1,1);
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+form {
+    border: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    &:focus {
+        border-color: #6696ea;
+    }
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 10px 50px;
+    background: #ccc;
+    border: 1px solid #333;
+}
+
+fieldset {
+    @include clearfix();
+    border: none;
+
+    &.group {
+        margin: $grid-gutter 0;
+    }
+}
+
+fieldset.information{
+    fieldset{
+        @include grid-column(1,1);
+    }
+}
+
+fieldset.shipping{
+    fieldset.city {
+        @include grid-column(2,3);
+
+        select {
+            @include grid-column(4,12,false);
+            position: relative;
+            border-radius: 3px 0 0 3px;
+            appearance: none;
+
+            &:focus {
+                z-index: 2;
+            }
+        }
+
+        input[type=text] {
+            @include grid-column(8,12,false);
+            position: relative;
+            border-radius: 0 3px 3px 0;
+            margin-left: -1px;
+
+            &:focus {
+                z-index: 2;
+            }
+        }
+    }
+    fieldset.adress {
+        @include grid-column(1,1);
+    }
+    fieldset.cost {
+        @include grid-column(1,3);
+    }
+}
+
+fieldset.payment{
+    fieldset.card-name{
+        @include grid-column(1,1);
+    }
+    fieldset.card-number{
+        @include grid-column(8,12);
+    }
+    fieldset.card-ccv{
+        @include grid-column(4,12);
+    }
+}
+
+fieldset.submit {
+    vertical-align: middle;
+
+    fieldset.agreement{
+        @include grid-column(1,1);
+        margin-bottom: $grid-gutter/2;
+
+        label {
+            margin: 0;
+            display: inline;
+        }
+
+        input[type=checkbox] {
+            margin: 0;
+            display: inline;
+        }
+
+    }
+
+    fieldset.submit{
+        @include grid-column(1,1);
+    }
+}
