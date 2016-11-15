@@ -2,50 +2,50 @@ extends /layouts/_default
 
 block content
     main.main
-        form.form
+        form.form(id="payment-form" onsubmit="return validateForm(this)")
             fieldset.information.group
                 
                 legend Personal Information
                 fieldset.name
-                    label First Name
-                    input(type="text" placeholder="Your name")
+                    label(for="name") First Name
+                    input(type="text" id="name" name="name" placeholder="Your name" pattern="[A-Za-z]{2,}" required) 
                 fieldset.surname
                     label Surname
-                    input(type="text" placeholder="Your surname")
+                    input(type="text" placeholder="Your surname" pattern="[A-Za-z]{2,}" required)
             fieldset.shipping.group
                 legend Shipping information
                 fieldset.adress
                     label Adress
-                    textarea Multiline text area
+                    textarea(pattern="[A-Za-z]{5,50}" required) Multiline text area
                 fieldset.city
                     label City
-                    select.country
-                        option(value="" disabled selected) Country
+                    select(name="country" onChange="onChangeCountry(this,this.value)") 
+                        option(value="" disabled selected) Select country
                         option(value="DE") Germany
                         option(value="AT") Austria
                         option(value="ES") Spain
                         option(value="FR") France
                         option(value="UK") UK
-                    input(type="text" placeholder="City" onkeyup="onChangeCity(this,this.value)")
+                    input(type="text" name="city" placeholder="City" onkeyup="onChangeCity(this,this.value)" pattern="[A-Za-z]{3,}" required)
                     div.results
                 fieldset.cost
                     label Shipping cost
-                    input(type="text" placeholder="Total")
+                    input(type="text" name="cost" placeholder="Total" readonly)
             fieldset.payment.group
                 legend Payment method
                 fieldset.card-name
                     label Card name
-                    input(type="text" placeholder="Complete name")
+                    input(type="text" placeholder="Complete name" required)
                 fieldset.card-number
                     label Card number
-                    input(type="text" placeholder="Your card number")
+                    input(type="text" name="card-number" maxlength="16" placeholder="Your card number" pattern="[0-9]{13,16}" required)
                 fieldset.card-ccv
                     label CCV
-                    input(type="text" placeholder="Your card CCV")
+                    input(type="text" maxlength="3" placeholder="Card CCV" pattern="[0-9]{3}" required)
             fieldset.submit
                 fieldset.agreement
                     input(type="checkbox" id="agreement-checkbox" name="agreement")
-                    label(for="agreement-checkbox") Agree terms and conditions
+                    label(for="agreement-checkbox" required) Agree terms and conditions
                 fieldset.submit
                     button Send
             
