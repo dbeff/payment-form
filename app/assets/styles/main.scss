@@ -43,6 +43,21 @@ textarea {
     &:focus {
         border-color: #6696ea;
     }
+
+    &:invalid:focus {
+        border-color: #fc0d1b;
+    }
+
+    &:valid:focus {
+        border-color: #94c37e;
+    }
+}
+
+select {
+    // background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    // background-position: calc(100% - 20px) calc(1em + 4px), calc(100% - 15px) calc(1em + 4px), calc(100% - 2.5em) 0.7em;
+    // background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    // background-repeat: no-repeat;
 }
 
 textarea {
@@ -53,6 +68,7 @@ button {
     padding: 10px 50px;
     background: #ccc;
     border: 1px solid #333;
+    border-radius: 3px;
 }
 
 fieldset {
@@ -64,18 +80,26 @@ fieldset {
     }
 }
 
-fieldset.information{
-    fieldset{
+fieldset.information {
+    fieldset {
         @include grid-column(1,1);
     }
 }
 
-fieldset.shipping{
+fieldset.shipping {
+
+    fieldset.adress {
+        @include grid-column(1,1);
+    }
+
     fieldset.city {
         @include grid-column(2,3);
+        @include grid-column-breakpoint("small",1,1);
 
         select {
             @include grid-column(4,12,false);
+            @include grid-column-breakpoint("small",1,2);
+            @include grid-column-breakpoint("medium",1,2);
             position: relative;
             border-radius: 3px 0 0 3px;
             appearance: none;
@@ -87,6 +111,8 @@ fieldset.shipping{
 
         input[type=text] {
             @include grid-column(8,12,false);
+            @include grid-column-breakpoint("small",1,2);
+            @include grid-column-breakpoint("medium",1,2);
             position: relative;
             border-radius: 0 3px 3px 0;
             margin-left: -1px;
@@ -96,29 +122,29 @@ fieldset.shipping{
             }
         }
     }
-    fieldset.adress {
-        @include grid-column(1,1);
-    }
+
     fieldset.cost {
         @include grid-column(1,3);
+        @include grid-column-breakpoint("small",1,1);
     }
 }
 
-fieldset.payment{
-    fieldset.card-name{
+fieldset.payment {
+    fieldset.card-name {
         @include grid-column(1,1);
     }
-    fieldset.card-number{
+
+    fieldset.card-number {
         @include grid-column(8,12);
     }
-    fieldset.card-ccv{
+
+    fieldset.card-ccv {
         @include grid-column(4,12);
     }
 }
 
 fieldset.submit {
-
-    fieldset.agreement{
+    fieldset.agreement {
         @include grid-column(1,1);
         margin-bottom: $grid-gutter/2;
         vertical-align: middle;
@@ -132,10 +158,9 @@ fieldset.submit {
             margin: 0;
             display: inline;
         }
-
     }
 
-    fieldset.submit{
+    fieldset.submit {
         @include grid-column(1,1);
     }
 }
