@@ -26,7 +26,7 @@ block content
                         option(value="ES") Spain
                         option(value="FR") France
                         option(value="UK") UK
-                    input(type="text" name="city" placeholder="City" onkeyup="onChangeCity(this,this.value)" onblur="onBlurCity(this)" autocomplete="off" disabled)
+                    input(type="text" name="city" placeholder="City" onkeyup="onChangeCity(this,this.value)" onblur="onBlurCity(this)" maxlength="70" autocomplete="off" disabled)
                     div.results
                         ul.list
                 fieldset.cost
@@ -36,7 +36,7 @@ block content
                 legend Payment method
                 fieldset.card-name
                     label(for="card-name") Card name
-                    input(type="text" name="cardName" placeholder="Complete name" onkeyup="onUpdateInput(this)")
+                    input(type="text" name="cardName" placeholder="Complete name" onkeyup="onUpdateInput(this)" maxlength="70") 
                 fieldset.card-number
                     label(for="card-number") Card number
                     input(type="text" name="cardNumber" maxlength="16" placeholder="Your card number" onkeyup="onUpdateInput(this)")
