@@ -24,11 +24,11 @@ var costs = {
 
 var fields = {
     firstName: { regex: "[A-Za-z]{3,20}", errorMessage: "Invalid name."},
-    surname : { regex: "[A-Za-z]{3,20}", errorMessage: "Invalid surname."},
-    adress : { regex: "[A-Za-z]{3,20}", errorMessage: "Invalid adress."},
+    surname : { regex: "[A-Za-z]{3,50}", errorMessage: "Invalid surname."},
+    adress : { regex: "[A-Za-z]{3,150}", errorMessage: "Invalid adress."},
     country : { regex: "[A-Z]{2}", errorMessage: "Select country."},
-    city : { regex: "[A-Za-z]{3,30}", errorMessage: "Invalid city."},
-    cardName : { regex: "[A-Za-z]{3,20}", errorMessage: "Invalid card name."},
+    city : { regex: "[A-Za-z]{3,70}", errorMessage: "Invalid city."},
+    cardName : { regex: "[A-Za-z]{3,70}", errorMessage: "Invalid card name."},
     cardNumber : { regex: "[0-9]{13,16}", errorMessage: "Invalid card number."},
     cardCCV : { regex: "[0-9]{3}", errorMessage: "Invalid card CCV."}
 }
