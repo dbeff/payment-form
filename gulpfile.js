@@ -27,15 +27,8 @@ var fonts = "assets/fonts";
 var template = "template";
 
 var AUTOPREFIXER_BROWSERS = [
-    "ie >= 9",
-    "ie_mob >= 10",
-    "ff >= 30",
-    "chrome >= 34",
-    "safari >= 7",
-    "opera >= 23",
-    "ios >= 7",
-    "android >= 4",
-    "bb >= 10",
+    "last 2 versions",
+    "ie >= 9"
 ];
 
 //-------------------------------------------------------------------
