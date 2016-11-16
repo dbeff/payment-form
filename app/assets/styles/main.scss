@@ -30,6 +30,10 @@ label {
     margin-bottom: 10px;
 }
 
+input{
+    outline: none;
+}
+
 input[type=text],
 select,
 textarea {
@@ -39,36 +43,45 @@ textarea {
     outline: none;
     border: 1px solid #ccc;
     border-radius: 3px;
+    appearance: none;
+    transition: border-color $animation-duration;
+
+    &:disabled{
+        border-color: #eee;
+        // border-style: dotted;
+        cursor: not-allowed;
+    }
 
     &:focus {
         border-color: #6696ea;
     }
 
-    &:invalid:focus {
-        border-color: #fc0d1b;
-    }
+    // &:valid:focus {
+    //     border-color: color("green");
+    // }
 
-    &:valid:focus {
-        border-color: #94c37e;
+    &.-error{
+        border-color: color("red");
     }
-}
-
-select {
-    // background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
-    // background-position: calc(100% - 20px) calc(1em + 4px), calc(100% - 15px) calc(1em + 4px), calc(100% - 2.5em) 0.7em;
-    // background-size: 5px 5px, 5px 5px, 1px 1.5em;
-    // background-repeat: no-repeat;
 }
 
 textarea {
     resize: vertical;
+    height: 80px;
 }
 
 button {
     padding: 10px 50px;
-    background: #ccc;
-    border: 1px solid #333;
+    background-color: color("blue");
+    color: white;
     border-radius: 3px;
+    border: 1px solid color("blue",60%);
+    outline: none;
+    font-weight: 600;
+
+    &:active{
+        background: color("blue",55%);
+    }
 }
 
 fieldset {
@@ -93,16 +106,17 @@ fieldset.shipping {
     }
 
     fieldset.city {
+        position: relative;
         @include grid-column(2,3);
         @include grid-column-breakpoint("small",1,1);
 
         select {
             @include grid-column(4,12,false);
-            @include grid-column-breakpoint("small",1,2);
-            @include grid-column-breakpoint("medium",1,2);
+            @include grid-column-breakpoint("small",1,2,false);
+            @include grid-column-breakpoint("medium",1,2,false);
             position: relative;
             border-radius: 3px 0 0 3px;
-            appearance: none;
+            z-index: 1;
 
             &:focus {
                 z-index: 2;
@@ -111,14 +125,26 @@ fieldset.shipping {
 
         input[type=text] {
             @include grid-column(8,12,false);
-            @include grid-column-breakpoint("small",1,2);
-            @include grid-column-breakpoint("medium",1,2);
+            @include grid-column-breakpoint("small",1,2,false);
+            @include grid-column-breakpoint("medium",1,2,false);
             position: relative;
             border-radius: 0 3px 3px 0;
             margin-left: -1px;
+            background-position: right 10px center;
+            background-size: 15px;
+            background-repeat: no-repeat;
+            transition: background $animation-duration;
+
+            &.-loading{
+                background-image: url("../images/loading.svg");
+            }
 
             &:focus {
                 z-index: 2;
+            }
+
+            &.-error{
+                z-index: 1;
             }
         }
     }
@@ -136,10 +162,12 @@ fieldset.payment {
 
     fieldset.card-number {
         @include grid-column(8,12);
+        @include grid-column-breakpoint("small",7,12);
     }
 
     fieldset.card-ccv {
         @include grid-column(4,12);
+        @include grid-column-breakpoint("small",5,12);
     }
 }
 
@@ -162,5 +190,77 @@ fieldset.submit {
 
     fieldset.submit {
         @include grid-column(1,1);
+    }
+}
+
+.results{
+    position: absolute;
+    top:70px;
+    right: 20px;
+    z-index: 9999;
+
+    @include grid-column(8,12,false);
+    @include grid-column-breakpoint("small",1,2,false);
+    @include grid-column-breakpoint("medium",1,2,false);
+
+    .list{
+        background: white;
+        @include box-shadow(1);
+        border-radius: 3px;
+        display: block;
+        overflow: scroll;
+
+        .item{
+            padding:10px 20px;
+            width: 100%;
+            &:hover{
+                background: #f8f8f8;
+            }
+        }
+    }
+}
+
+
+.warnings{
+    @include grid-column(1,1);
+    margin: 40px 0;
+    display: none;
+
+    &.-show{
+        display: block;
+    }
+
+    &.-animate{
+        animation: slide-in-up $animation-duration both;
+    }
+    .list{
+        list-style-type: disc;
+        padding: 10px;
+        padding-left: 33px;
+        color: color("red");
+        border: 1px solid color("red");
+        border-radius: 3px;
+    }
+
+}
+
+
+.thankyou{
+    h1{
+        text-align: center;
+    }
+
+    .panel{
+        background: white;
+        @include box-shadow(1);
+        border-radius: 3px;
+
+        margin-top: 30px;
+        padding: 30px;
+        text-align: center;
+
+        p{
+            color:#999;
+        }
     }
 }
