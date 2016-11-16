@@ -2,21 +2,21 @@ extends /layouts/_default
 
 block content
     main.main
-        form.form(id="payment-form" onsubmit="return validateForm(this)")
+        form.form(id="paymentForm" action="success.html" onsubmit="return validateForm(this)")
             fieldset.information.group
                 
                 legend Personal Information
                 fieldset.name
-                    label(for="name") First Name
-                    input(type="text" id="name" name="name" placeholder="Your name" pattern="[A-Za-z]{2,}" required) 
+                    label(for="firstName") First Name
+                    input(type="text" name="firstName" placeholder="Your name" maxlength="20" onkeyup="onUpdateInput(this)") 
                 fieldset.surname
-                    label Surname
-                    input(type="text" placeholder="Your surname" pattern="[A-Za-z]{2,}" required)
+                    label(for="surname") Surname
+                    input(type="text" name="surname" placeholder="Your surname" maxlength="50" onkeyup="onUpdateInput(this)")
             fieldset.shipping.group
                 legend Shipping information
                 fieldset.adress
-                    label Adress
-                    textarea(pattern="[A-Za-z]{5,50}" required) Multiline text area
+                    label(for="adress") Adress
+                    textarea(name="adress" placeholder="Your adress" maxlength="150" onkeyup="onUpdateInput(this)")
                 fieldset.city
                     label City
                     select(name="country" onChange="onChangeCountry(this,this.value)") 
@@ -26,26 +26,31 @@ block content
                         option(value="ES") Spain
                         option(value="FR") France
                         option(value="UK") UK
-                    input(type="text" name="city" placeholder="City" onkeyup="onChangeCity(this,this.value)" pattern="[A-Za-z]{3,}" required)
+                    input(type="text" name="city" placeholder="City" onkeyup="onChangeCity(this,this.value)" onblur="onBlurCity(this)" autocomplete="off" disabled)
                     div.results
+                        ul.list
                 fieldset.cost
                     label Shipping cost
                     input(type="text" name="cost" placeholder="Total" readonly)
             fieldset.payment.group
                 legend Payment method
                 fieldset.card-name
-                    label Card name
-                    input(type="text" placeholder="Complete name" required)
+                    label(for="card-name") Card name
+                    input(type="text" name="cardName" placeholder="Complete name" onkeyup="onUpdateInput(this)")
                 fieldset.card-number
-                    label Card number
-                    input(type="text" name="card-number" maxlength="16" placeholder="Your card number" pattern="[0-9]{13,16}" required)
+                    label(for="card-number") Card number
+                    input(type="text" name="cardNumber" maxlength="16" placeholder="Your card number" onkeyup="onUpdateInput(this)")
                 fieldset.card-ccv
-                    label CCV
-                    input(type="text" maxlength="3" placeholder="Card CCV" pattern="[0-9]{3}" required)
+                    label(for="card-ccv") CCV
+                    input(type="text" name="cardCCV" maxlength="3" placeholder="Card CCV" onkeyup="onUpdateInput(this)")
+            fieldset.warnings
+                ul.list
             fieldset.submit
                 fieldset.agreement
                     input(type="checkbox" id="agreement-checkbox" name="agreement")
-                    label(for="agreement-checkbox" required) Agree terms and conditions
+                    label(for="agreement-checkbox") Agree terms and conditions
                 fieldset.submit
                     button Send
+            
+                
             
