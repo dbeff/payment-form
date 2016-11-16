@@ -4,7 +4,13 @@
 http://payment-form.surge.sh
 
 ### Screenshot
+
+#### Form
 ![screenshot](/resources/screenshot.png?raw=true "screenshot")
+
+#### Cities loading
+![cities loading](/resources/cities.png?raw=true "cities loading")
+
 
 ### Technologies
 
