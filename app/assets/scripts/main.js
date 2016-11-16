@@ -8,7 +8,7 @@ var cost = form.elements["cost"];
 var cardName = form.elements["cardName"];
 var cardNumber = form.elements["cardNumber"];
 var cardCCV = form.elements["cardCCV"];
-var agreement = form.elements["agreement"];
+var agreement = document.getElementById("agreement");
 var warnings = document.querySelector(".warnings");
 var warningsList = warnings.querySelector(".list");
 var results = document.querySelector(".results");
@@ -58,6 +58,7 @@ function requestDataPayload(payload) {
             li.onclick = function(event){
                 city.value = item;
                 resultsList.innerHTML = "";
+                cost.value = costs[country.value] || "";
             }
             resultsList.appendChild(li);
         }
@@ -66,7 +67,7 @@ function requestDataPayload(payload) {
 
 function onChangeCountry(e,value){
     city.value = "";
-    cost.value = costs[country.value] || "";
+    cost.value = "";
     resultsList.innerHTML = "";
     city.disabled = false;
     city.focus();
@@ -82,6 +83,7 @@ function onChangeCity(e, value) {
     } else {
         city.classList.remove("-loading");
         resultsList.innerHTML = "";
+        cost.value = "";
     }
 }
 
